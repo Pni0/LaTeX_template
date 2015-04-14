@@ -1,0 +1,164 @@
+\documentclass[12pt,a4paper,twoside,flequ,leqno,openany]{book}
+\usepackage[utf8]{inputenc}
+
+%%Inhaltsferzeichnis
+%\setcounter{secnumdepth}{3} %Nummerrierungslevel
+%\setcounter{tocdepth}{3} %Level der einträge im Verzeichnis
+
+%%Sonderzeichen und Worttrennung
+\usepackage{ngerman}
+
+%\usepackage[inner=4cm,outer=3cm,top=3cm,bottom=3cm,includeheadfoot]{geometry}
+
+%%Einzug bei Absatzanfang
+\parindent0pt %Einzug bei Absatzanfang
+%\parindent=4em
+
+%%Absatzabstand
+\parskip=1ex
+%\parskip=1em
+
+%%Zeilenabstände
+%\usepackage[onespacing]{setspace} %Einfacher Zeilenabstand
+%\usepackage[onehalfspacing]{setspace} %Eineinhalbfacher Zeilenabstand
+\usepackage[doublespacing]{setspace} %Doppelter Zeilenabstand
+
+% Einstellungen von Groeßen
+
+\usepackage{multirow}
+\usepackage{xcolor} %Farben ermoeglichen
+
+\usepackage{hyperref}%Links Einfuegen
+\hypersetup{colorlinks}
+%\hypersetup{
+%    colorlinks,
+%    citecolor=black,
+%    filecolor=black,
+%    linkcolor=black,
+%    urlcolor=black
+%}
+\usepackage{tikz}
+\usepackage{lipsum}
+
+\usepackage{datetime}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+%Kopf- und Fußzeile
+\pagestyle{fancy}
+\fancyhf{}
+
+%Kopfzeile rechts bzw. außen
+\fancyhead[RO,LE]{\nouppercase{\leftmark}}
+%Linie oben
+\renewcommand{\headrulewidth}{0.5pt}
+
+%Fußzeile rechts bzw. außen
+\fancyfoot[RO,LE]{\thepage}
+%Linie unten
+\renewcommand{\footrulewidth}{0.5pt}
+
+\fancypagestyle{plain}{ %
+	\fancyhf{} % remove everything
+	%\fancyhead[RO,LE]{\nouppercase{\leftmark}}
+	\renewcommand{\headrulewidth}{0.5pt}
+	\fancyfoot[RO,LE]{\thepage}
+	\renewcommand{\footrulewidth}{0.5pt}
+}
+
+\usepackage{icomma}
+
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+\newcommand{\ltab}{\raggedright\arraybackslash} % Tabellenabschnitt linksbündig
+\newcommand{\ctab}{\centering\arraybackslash} % Tabellenabschnitt zentriert
+\newcommand{\rtab}{\raggedleft\arraybackslash} % Tabellenabschnitt rechtsbündig
+
+\usepackage{graphicx}
+
+\usepackage[square]{natbib}      % für Benutzung von \bibliographystyle{natdin} und \bibliographystyle{dinat} bei bibtex
+\usepackage{multibib}         % ermöglicht die Verwendung mehrerer Literaturverzeichnisse
+
+\usepackage{ifthen}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{csvsimple}
+\usepackage{alltt}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%  Eigene Makros: %
+% % % % % % % % % %
+\newcommand{\com}[1]{\textcolor{red}{- #1 -}}
+
+\newcommand{\ToDo}[1]{ %
+	{\bf\textcolor{red}{ToDo:}}
+	\textcolor{red}{
+	\begin{itemize}
+	#1
+	\end{itemize}}
+	}
+	
+	
+\newcommand{\mycsv}[6][kV]{
+	\begin{table}[hbtp] %
+	\begin{center} %
+	\begin{tabular}{#5}
+	\toprule
+		#4\\\midrule
+	\csvreader[no head,late after line=\\]{#3}{}{#6}
+	\bottomrule	
+	\end{tabular} %
+	\caption{#2}
+	\ifthenelse{\equal{#1}{kV}}{}{\label{#1}}
+	\end{center}
+	\end{table}
+}
+\newcommand{\mycsvhere}[6][kV]{
+	\begin{table}[h!] %
+	\begin{center} %
+	\begin{tabular}{#5}
+	\toprule
+		#4\\\midrule
+	\csvreader[no head,late after line=\\]{#3}{}{#6}
+	\bottomrule	
+	\end{tabular} %
+	\caption{#2}
+	\ifthenelse{\equal{#1}{kV}}{}{\label{#1}}
+	\end{center}
+	\end{table}
+}
+	
+\newcommand{\mytabref}[1]{Tabelle~\ref{#1}:~\nameref{#1}, S.~\pageref{#1}}
+
+
+\newcommand{\ul}[1]{\underline{#1}}
+
+\newcommand{\muA}{\mbox{$\rm\mu A$}}
+\newcommand{\muG}{\mbox{$\rm\mu g$}}
+\newcommand{\muL}{\mbox{$\rm\mu\ell$}}
+\newcommand{\muM}{\mbox{$\rm\mu m$}}
+\newcommand{\musec}{\mbox{$\rm\mu s$}}
+\newcommand{\oC}{\mbox{$\rm^\circ C$}}
+
+
+
+%%%%%%%%%%%%%%%
+% Workarounds %
+%%%%%%%%%%%%%%%
+%% Paragraph überschritf und Text in nächster Zeile:
+\let\Oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\Oldparagraph{#1} ~\\}
+
+
+%%%%%%%%%%
+% Inhalt %
+%%%%%%%%%%
+\begin{document}
+
+% INHALT
+
+\end{document}
